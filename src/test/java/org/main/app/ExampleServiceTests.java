@@ -102,7 +102,7 @@ public class ExampleServiceTests extends TestCase {
 	}
 	/**I need to extract all comments  ordered by createdAt desc. I achieve it with the query ->
 	 * ->  db.articles.aggregate( {$project:{author:1, comments:1}} , {$unwind:"$comments"} , {$sort:{"comments.createdAt":-1}} , {$group: {_id:null,comments:{$push:"$comments"}}} );
-	 * but the produced output from the testMongoAggregate() function is:
+	 * but the produced query from the testMongoAggregate() function is:
 	 * produced  -						{ "$project" : { "comments" : "$comments"}} , { "$unwind" : "$comments"} , { "$group" : { "_id" : "$comments" , "comments" : { "$push" : "$comments"}}}
 	 * 																																	    /\ - here should be null
 	 *
